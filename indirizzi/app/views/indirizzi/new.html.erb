@@ -1,0 +1,9 @@
+<%= form_for :posizione do |f| %>
+  <p>
+    <%= f.label :"Nuova posizione" %><br>
+    <%= f.text_field :posizione %>
+  </p>
+  <p>
+    <%= button_to "Crea", indirizzi_create_path, :action => :create %>
+  </p>
+<% end %>
