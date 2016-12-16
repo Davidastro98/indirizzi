@@ -1,9 +1,13 @@
-<%= form_for :posizione do |f| %>
+<%= form_for :posizione, url: indirizzi_create_path do |f| %>
+<p>
+  <%= f.label :name %><br>
+  <%= f.text_field :name %>
+</p>
   <p>
-    <%= f.label :"Nuova posizione" %><br>
-    <%= f.text_field :posizione %>
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
   </p>
   <p>
-    <%= button_to "Crea", indirizzi_create_path, :action => :create %>
+  <%= f.submit %>
   </p>
 <% end %>

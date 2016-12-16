@@ -1,8 +1,24 @@
-<%= form_for :indirizzi do |f| %>
+<div>
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Indirizzo</th>
+  </tr>
+
+<% @posizioni.each do |posizione| %>
+<tr>
+      <td><%= posizione.name %></td>
+      <td><%= posizione.address %></td>
+    </tr>
+  <% end %>
+</table>
+</div>
+
+<div>
+<p>
+  <i> Inserire qui la mappa google </i>
+</p>
+</div>
   <p>
-    <%= f.label :Mappa %><br>
-  </p>
-  <p>
-    <%= link_to "Aggiungi posizione", { :controller => "indirizzi", :action => "new"} %>
-  </p>
-<% end %>
+    <%= link_to "Aggiungi posizione", indirizzi_new_path %>
+</p>
