@@ -3,12 +3,16 @@
   <tr>
     <th>Nome</th>
     <th>Indirizzo</th>
+    <th>Latitudine</th>
+    <th>Longitudine</th>
   </tr>
 
 <% @posizioni.each do |posizione| %>
 <tr>
       <td><%= posizione.name %></td>
       <td><%= posizione.address %></td>
+      <td><%= posizione.latitude %></td>
+      <td><%= posizione.longitude %></td>
     </tr>
   <% end %>
 </table>
