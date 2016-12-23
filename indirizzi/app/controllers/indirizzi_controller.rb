@@ -8,6 +8,7 @@ class IndirizziController < ApplicationController
 
 	def create
 		@posizione = Position.new(parametri_posizione)
+<<<<<<< HEAD
 
 		if @posizione.save
 			redirect_to indirizzi_path
@@ -17,6 +18,12 @@ class IndirizziController < ApplicationController
 	end
 
 	private
+=======
+		if @posizione.save
+			redirect_to indirizzi_path
+		end
+	end 
+>>>>>>> master
 	def parametri_posizione
 		params.require(:posizione).permit(:name,:address)
 	end
