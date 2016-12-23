@@ -15,6 +15,8 @@ ActiveRecord::Schema.define(version: 20161216083500) do
   create_table "positions", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
