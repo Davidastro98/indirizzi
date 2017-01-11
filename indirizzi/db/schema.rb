@@ -12,13 +12,13 @@
 
 ActiveRecord::Schema.define(version: 20161216164559) do
 
-  create_table "positions", force: :cascade do |t|
+  create_table "positions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "address"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.float    "latitude"
-    t.float    "longitude"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.float    "latitude",   limit: 24
+    t.float    "longitude",  limit: 24
   end
 
 end

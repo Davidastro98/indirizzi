@@ -24,7 +24,7 @@
                 zoom: 12
                 //minZoom: 12 //Decommentare per definire lo Zoom Out massimo (12 inquadra una città)
         });
-        //Assegna il clusterer che raggruppa i marker quando vicini. 
+        //Assegna il clusterer che raggruppa i marker quando vicini.
         var markerCluster = new MarkerClusterer(map, markers,{imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
     }
 </script>
@@ -37,8 +37,6 @@
     }
 </style>
 
-
-<div>
     <table width="100%" border="1">
         <tr>
             <th>Nome</th>
@@ -63,4 +61,5 @@
 
 <p>
     <%= link_to "Aggiungi posizione", indirizzi_new_path %>
+  </p>
 </p>

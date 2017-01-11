@@ -3,6 +3,7 @@ class CreatePositions < ActiveRecord::Migration[5.0]
     create_table :positions do |t|
       t.string :name
       t.string :address
+
       t.timestamps
     end
   end
