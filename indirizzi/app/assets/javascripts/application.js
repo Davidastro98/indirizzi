@@ -15,4 +15,6 @@
 //= require turbolinks
 //= require geocomplete
 //= require geocoding
+//= require markerclusterer
+//= require home
 //= require_tree .

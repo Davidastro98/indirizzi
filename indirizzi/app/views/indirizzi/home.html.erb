@@ -1,48 +1,41 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYg_IUpxEgUxNTsa7v4EvPavXTP1NHgjY&callback=initMap" defer></script>
-<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 <script>
-    function initMap(){
-        //Crea un vettore contenente tutte le LAT e LON dei markers
-        var locations = [
-            <% @posizioni.each do |pos| %>
-            {lat: <%= pos.latitude %>, lng: <%= pos.longitude %>},
-            <% end %>
-        ]
-        //Elenco per le laber da assegnare ai vari markers
-        var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        //Crea un array di markers a partire dall'elenco delle posizioni
-        var markers = locations.map(function(location, i) {
-                return new google.maps.Marker({
-                position: location,
-                label: labels[i % labels.length]
-            });
+function initMap(){
+    //Crea un vettore contenente tutte le LAT e LON dei markers
+    var locations = [
+        <% @posizioni.each do |pos| %>
+        {lat: <%= pos.latitude %>, lng: <%= pos.longitude %>},
+        <% end %>
+    ]
+    //Elenco per le laber da assegnare ai vari markers
+    var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    //Crea un array di markers a partire dall'elenco delle posizioni
+    var markers = locations.map(function(location, i) {
+            return new google.maps.Marker({
+            position: location,
+            label: labels[i % labels.length]
         });
-        //Definisce la mappa
-        var map = new google.maps.Map(document.getElementById('map'),{
-                center: {lat: <%= @posizioni[0].latitude %>, lng: <%= @posizioni[0].longitude %>},
-                scrollwheel: true,
-                zoom: 12
-                //minZoom: 12 //Decommentare per definire lo Zoom Out massimo (12 inquadra una città)
-        });
-        //Assegna il clusterer che raggruppa i marker quando vicini.
-        var markerCluster = new MarkerClusterer(map, markers,{imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
-    }
+    });
+    //Definisce la mappa
+    var map = new google.maps.Map(document.getElementById('map'),{
+            center: {lat: <%= @posizioni[0].latitude %>, lng: <%= @posizioni[0].longitude %>},
+            scrollwheel: true,
+            zoom: 12
+            //minZoom: 12 //Decommentare per definire lo Zoom Out massimo (12 inquadra una città)
+    });
+    //Assegna il clusterer che raggruppa i marker quando vicini.
+    var markerCluster = new MarkerClusterer(map, markers,{imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+}
+
 </script>
-
-<style>
-    #map {
-        width: 100%;
-        height: 400px;
-        background-color: grey;
-    }
-</style>
-
+<p>
     <table width="100%" border="1">
         <tr>
             <th>Nome</th>
             <th>Indirizzo</th>
             <th>LAT</th>
             <th>LON</th>
+            <th></th>
         </tr>
         <% @posizioni.each do |posizione| %>
             <tr>
@@ -50,10 +43,11 @@
                 <td><%= posizione.address %></td>
                 <td><%= posizione.latitude %></td>
                 <td><%= posizione.longitude %></td>
+                <td align="center"><%= button_to "Elimina", action: "remove", :id => posizione.id %></td>
             </tr>
        <% end %>
     </table>
-</div>
+</p>
 
 <p>
     <div id="map"></div>
@@ -61,5 +55,4 @@
 
 <p>
     <%= link_to "Aggiungi posizione", indirizzi_new_path %>
-  </p>
 </p>

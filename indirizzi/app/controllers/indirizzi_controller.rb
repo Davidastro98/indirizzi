@@ -15,9 +15,12 @@ class IndirizziController < ApplicationController
 			render 'new'
 		end
 	end
+	def remove
+		Position.destroy(params.require(:id))
+	end
 
 	private
-		
+
 	def parametri_posizione
 		params.require(:posizione).permit(:name,:address)
 	end
